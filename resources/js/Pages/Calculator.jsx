@@ -319,7 +319,7 @@ export default function Calculator() {
                                            hover:bg-gray-700
                                            disabled:bg-gray-400 disabled:cursor-not-allowed"
                             >
-                                {isCsvLoading ? "Importing..." : "Upload & Replace Data"}
+                                {isCsvLoading ? "Importing..." : "Upload Data"}
                             </button>
                         </div>
                         {csvError && (
