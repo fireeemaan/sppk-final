@@ -1,0 +1,20 @@
+{
+  "calculator": {
+    "title": "Kalkulator SPK",
+    "importTitle": "Impor Data dari CSV",
+    "criteria": "Kriteria",
+    "matrix": "Matriks Keputusan",
+    "calculate": "Hitung",
+    "calculating": "Menghitung...",
+    "calculationResults": "Hasil Perhitungan",
+    "addCriterion": "+ Tambah Kriteria",
+    "addAlternative": "+ Tambah Alternatif",
+    "totalWeight": "Total Bobot",
+    "rankings": "Peringkat"
+  },
+  "toast": {
+    "weightError": "Total bobot harus 100. Total saat ini {{totalWeight}}.",
+    "calcSuccess": "Perhitungan selesai!",
+    "importSuccess": "Data berhasil diimpor!"
+  }
+}

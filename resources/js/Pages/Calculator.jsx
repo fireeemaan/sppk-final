@@ -4,8 +4,11 @@ import { useState, useEffect, useRef } from 'react';
 import { animate, createScope, stagger } from 'animejs';
 import { toast } from 'react-hot-toast';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 
 export default function Calculator() {
+
+    const { t, i18n } = useTranslation();
 
     const [method, setMethod] = useState('topsis');
 
@@ -105,7 +108,7 @@ export default function Calculator() {
             setAlternatives(response.data.alternatives);
             setMatrix(response.data.matrix);
 
-            toast.success('CSV data imported successfully!');
+            toast.success(t('toast.importSuccess'));
             setCsvFile(null);
 
         } catch (err) {
@@ -229,12 +232,37 @@ export default function Calculator() {
             <Head title="SPPK Calculator" />
 
             <div className="min-h-screen bg-gray-100 p-4 md:p-8" ref={rootRef}>
+                <div className="flex space-x-2 z-10 justify-end mb-5">
+                    <button
+                        type="button"
+                        onClick={() => i18n.changeLanguage('en')}
+                        className={`p-2 rounded-md font-medium transition-all ${i18n.language === 'en'
+                            ? 'bg-indigo-600 text-white shadow'
+                            : 'bg-white text-gray-600 hover:bg-indigo-50'
+                            }`}
+                        title="Switch to English"
+                    >
+                        EN
+                    </button>
+                    <button
+                        type="button"
+                        onClick={() => i18n.changeLanguage('id')}
+                        className={`p-2 rounded-md font-medium transition-all ${i18n.language === 'id'
+                            ? 'bg-indigo-600 text-white shadow'
+                            : 'bg-white text-gray-600 hover:bg-indigo-50'
+                            }`}
+                        title="Ganti ke Bahasa Indonesia"
+                    >
+                        ID
+                    </button>
+                </div>
                 <form onSubmit={handleSubmit} className="w-full max-w-7xl mx-auto space-y-6">
 
                     <div className="bg-white shadow-lg rounded-lg p-6 card-animate">
-                        {/* <h1 className="text-3xl font-bold text-center text-gray-800 mb-4">
-                            SPPK Calculator
-                        </h1> */}
+                        <h1 className="text-3xl font-bold text-center text-gray-800 mb-4">
+                            {t('calculator.title')}
+                            {/* SPPK Calculator */}
+                        </h1>
                         <div className="flex justify-center rounded-md shadow-sm">
                             {/* <button
                                 type="button"
@@ -270,7 +298,7 @@ export default function Calculator() {
                     </div>
 
                     <div className="bg-white shadow-lg rounded-lg p-6 card-animate">
-                        <h2 className="text-2xl font-semibold text-gray-700 mb-4">Import from CSV</h2>
+                        <h2 className="text-2xl font-semibold text-gray-700 mb-4">{t('calculator.importTitle')}</h2>
                         <div className="flex flex-col md:flex-row md:items-center md:space-x-4">
                             <input
                                 type="file"
@@ -301,10 +329,10 @@ export default function Calculator() {
 
                     <div className="bg-white shadow-lg rounded-lg p-6 card-animate">
                         <div className="flex justify-between items-center mb-4">
-                            <h2 className="text-2xl font-semibold text-gray-700">Criteria</h2>
+                            <h2 className="text-2xl font-semibold text-gray-700">{t('calculator.criteria')}</h2>
                             <span className={`text-lg font-medium p-2 rounded ${totalWeight === 100 ? 'text-green-700 bg-green-100' : 'text-red-700 bg-red-100'
                                 }`}>
-                                Total Weight: {totalWeight} / 100
+                                {t('calculator.totalWeight')}: {totalWeight} / 100
                             </span>
                         </div>
                         <div className="space-y-4">
@@ -358,13 +386,13 @@ export default function Calculator() {
                             onClick={addCriterion}
                             className="mt-4 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-all font-medium shadow"
                         >
-                            + Add Criterion
+                            {t('calculator.addCriterion')}
                         </button>
                     </div>
 
                     <div className="bg-white shadow-lg rounded-lg card-animate">
                         <div className="p-6">
-                            <h2 className="text-2xl font-semibold text-gray-700 mb-4">Decision Matrix</h2>
+                            <h2 className="text-2xl font-semibold text-gray-700 mb-4">{t('calculator.matrix')}</h2>
                         </div>
                         <div className="overflow-x-auto">
                             <table className="min-w-full divide-y divide-gray-200">
@@ -422,7 +450,7 @@ export default function Calculator() {
                                 onClick={addAlternative}
                                 className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-all font-medium shadow"
                             >
-                                + Add Alternative
+                                {t('calculator.addAlternative')}
                             </button>
                         </div>
                     </div>
@@ -472,7 +500,7 @@ export default function Calculator() {
                                        hover:bg-blue-700
                                        disabled:bg-gray-400 disabled:cursor-not-allowed"
                         >
-                            {isLoading ? 'Calculating...' : `Calculate ${method.toUpperCase()}`}
+                            {isLoading ? 'Calculating...' : `${t('calculator.calculate')} ${method.toUpperCase()}`}
                         </button>
                     </div>
 
@@ -481,11 +509,11 @@ export default function Calculator() {
                 {results && (
                     <div className="w-full max-w-7xl mx-auto bg-white shadow-lg rounded-lg mt-6" ref={resultsRef}>
                         <h2 className="text-2xl font-semibold text-gray-700 p-6 border-b border-gray-200">
-                            Calculation Results ({results.method.toUpperCase()})
+                            {t('calculator.calculationResults')} ({results.method.toUpperCase()})
                         </h2>
 
                         <div className="p-6">
-                            <h3 className="text-xl font-semibold text-gray-700 mb-4">Rankings</h3>
+                            <h3 className="text-xl font-semibold text-gray-700 mb-4">{t('calculator.rankings')}</h3>
                             <table className="min-w-full divide-y divide-gray-200 border">
                                 <thead className="bg-gray-50">
                                     <tr>

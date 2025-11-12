@@ -1,0 +1,20 @@
+{
+  "calculator": {
+    "title": "SPK Calculator",
+    "importTitle": "Import Data from CSV",
+    "criteria": "Criteria",
+    "matrix": "Decision Matrix",
+    "calculate": "Calculate",
+    "calculating": "Calculating...",
+    "calculationResults": "Calculation Results",
+    "addCriterion": "+ Add Criterion",
+    "addAlternative": "+ Add Alternative",
+    "totalWeight": "Total Weight",
+    "rankings": "Rankings"
+  },
+  "toast": {
+    "weightError": "Total weight must be 100. Current total is {{totalWeight}}.",
+    "calcSuccess": "Calculation complete!",
+    "importSuccess": "Data imported successfully!"
+  }
+}

@@ -6,6 +6,9 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createRoot } from 'react-dom/client';
 import { Toaster } from 'react-hot-toast';
 
+import React, { Suspense } from 'react';
+import './i18n';
+
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 createInertiaApp({
@@ -19,10 +22,10 @@ createInertiaApp({
         const root = createRoot(el);
 
         root.render(
-            <>
+            <Suspense fallback={<div>Loading...</div>}>
                 <App {...props} />
                 <Toaster position="top-center" reverseOrder={false} />
-            </>
+            </Suspense>
         );
     },
     progress: {
