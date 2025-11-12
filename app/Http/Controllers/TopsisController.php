@@ -30,7 +30,10 @@ class TopsisController extends Controller
         $numAlternatives = count($matrix);
 
         $normalizedMatrix = [];
+        // rss = root sum square
         $rss = [];
+
+        // Normalization
 
         for ($j = 0; $j < $numCriteria; $j++) {
             $sumOfSquares = 0;
@@ -46,6 +49,8 @@ class TopsisController extends Controller
             }
         }
 
+        // Weighted Normalized Decision Matrix
+
         $weightedMatrix = [];
         for ($i = 0; $i < $numAlternatives; $i++) {
             for ($j = 0; $j < $numCriteria; $j++) {
@@ -53,6 +58,8 @@ class TopsisController extends Controller
             }
         }
 
+
+        // Ideal Positive and Negative Solutions
 
         $idealPositive = [];
         $idealNegative = [];
@@ -68,9 +75,10 @@ class TopsisController extends Controller
             }
         }
 
+        // Separation Measures
 
-        $separationPositive = [];
-        $separationNegative = [];
+        $distancePositive = [];
+        $distanceNegative = [];
 
         for ($i = 0; $i < $numAlternatives; $i++) {
             $sPlus = 0;
@@ -79,15 +87,15 @@ class TopsisController extends Controller
                 $sPlus += ($weightedMatrix[$i][$j] - $idealPositive[$j]) ** 2;
                 $sMinus += ($weightedMatrix[$i][$j] - $idealNegative[$j]) ** 2;
             }
-            $separationPositive[$i] = sqrt($sPlus);
-            $separationNegative[$i] = sqrt($sMinus);
+            $distancePositive[$i] = sqrt($sPlus);
+            $distanceNegative[$i] = sqrt($sMinus);
         }
 
 
         $finalScores = [];
         for ($i = 0; $i < $numAlternatives; $i++) {
-            $denominator = $separationPositive[$i] + $separationNegative[$i];
-            $score = $denominator == 0 ? 0 : $separationNegative[$i] / $denominator;
+            $denominator = $distancePositive[$i] + $distanceNegative[$i];
+            $score = $denominator == 0 ? 0 : $distanceNegative[$i] / $denominator;
 
             $finalScores[] = [
                 'name' => $alternativeNames[$i],
