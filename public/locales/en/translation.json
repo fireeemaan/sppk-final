@@ -1,6 +1,6 @@
 {
   "calculator": {
-    "title": "DSS Calculator",
+    "title": "Decision Support System for the Selection of Computer Science Faculty Laboratory Assistant Candidates",
     "importTitle": "Import Data from CSV",
     "criteria": "Criteria",
     "matrix": "Decision Matrix",

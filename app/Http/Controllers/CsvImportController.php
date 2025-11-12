@@ -22,7 +22,7 @@ class CsvImportController extends Controller
             $csv = Reader::from($file->getPathname(), 'r');
             $csv->setHeaderOffset(0);
 
-            $statement = (new Statement())->offset(1);
+            $statement = (new Statement())->offset(0);
             $records = $statement->process($csv)->getRecords();
             $header = $csv->getHeader();
 
