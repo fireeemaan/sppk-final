@@ -7,10 +7,11 @@
     "calculate": "Hitung",
     "calculating": "Menghitung...",
     "calculationResults": "Hasil Perhitungan",
-    "addCriterion": "+ Tambah Kriteria",
-    "addAlternative": "+ Tambah Alternatif",
+    "addCriterion": "Tambah Kriteria",
+    "addAlternative": "Tambah Alternatif",
     "totalWeight": "Total Bobot",
-    "rankings": "Peringkat"
+    "rankings": "Peringkat",
+    "method": "Metode"
   },
   "toast": {
     "weightError": "Total bobot harus 100. Total saat ini {{totalWeight}}.",

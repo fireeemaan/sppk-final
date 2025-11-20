@@ -7,10 +7,11 @@
     "calculate": "Calculate",
     "calculating": "Calculating...",
     "calculationResults": "Calculation Results",
-    "addCriterion": "+ Add Criterion",
-    "addAlternative": "+ Add Alternative",
+    "addCriterion": "Add Criterion",
+    "addAlternative": "Add Alternative",
     "totalWeight": "Total Weight",
-    "rankings": "Rankings"
+    "rankings": "Rankings",
+    "method": "Method"
   },
   "toast": {
     "weightError": "Total weight must be 100. Current total is {{totalWeight}}.",
