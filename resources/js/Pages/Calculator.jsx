@@ -292,8 +292,8 @@ export default function Calculator() {
                             <div className="bg-indigo-600 p-2 rounded-lg text-white">
                                 <CalcIcon size={24} />
                             </div>
-                            <div>
-                                <h1 className="text-xl font-bold bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent">
+                            <div className="hidden sm:block">
+                                <h1 className="text-sm md:text-xl font-bold bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent">
                                     {t('calculator.title') || 'SPPK Calculator'}
                                 </h1>
                             </div>
