@@ -261,6 +261,7 @@ export default function Calculator() {
 
             setResults(response.data);
             setError(null);
+            console.log(response.data);
             toast.success('Calculation completed!');
         } catch (err) {
             if (err.response && err.response.data && err.response.data.message) {
@@ -381,9 +382,9 @@ export default function Calculator() {
                                                 <FileSpreadsheet className={`transition-colors ${isDragging ? 'text-indigo-700 dark:text-indigo-300' : 'text-indigo-600 dark:text-indigo-400'}`} />
                                             </div>
                                             <p className={`text-sm font-medium transition-colors ${isDragging ? 'text-indigo-600 dark:text-indigo-300' : 'text-gray-700 dark:text-gray-300'}`}>
-                                                {csvFile ? csvFile.name : (isDragging ? "Drop file here" : "Select a .csv file")}
+                                                {csvFile ? csvFile.name : (isDragging ? t('csv.drop') || "Drop file here to upload" : t('csv.select') || "Select a .csv file")}
                                             </p>
-                                            <p className="text-xs text-gray-500 mt-1">or drag and drop</p>
+                                            <p className="text-xs text-gray-500 mt-1">{t('csv.dragDrop') || "or drag and drop it here"}</p>
                                         </div>
                                     </div>
                                     <button
@@ -392,7 +393,7 @@ export default function Calculator() {
                                         disabled={isCsvLoading || !csvFile}
                                         className="mt-4 w-full py-2 bg-gray-800 text-white rounded-lg font-medium hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                                     >
-                                        {isCsvLoading ? 'Importing...' : 'Upload Data'}
+                                        {isCsvLoading ? t('csv.uploading') || 'Importing...' : t('csv.upload') || 'Upload Data'}
                                     </button>
                                     {csvError && <p className="text-red-500 text-sm mt-2 text-center">{csvError}</p>}
                                 </Card>
@@ -418,7 +419,7 @@ export default function Calculator() {
                                                 <div className="flex flex-col md:flex-row gap-4 items-center">
                                                     {/* Name Input */}
                                                     <div className="flex-1 w-full">
-                                                        <label className="text-xs font-semibold uppercase tracking-wider opacity-50 mb-1 block">Name</label>
+                                                        <label className="text-xs font-semibold uppercase tracking-wider opacity-50 mb-1 block">{t('calculator.name') || "Name"}</label>
                                                         <input
                                                             type="text"
                                                             value={crit.name}
@@ -430,7 +431,7 @@ export default function Calculator() {
 
                                                     {/* Type Select */}
                                                     <div className="w-full md:w-32">
-                                                        <label className="text-xs font-semibold uppercase tracking-wider opacity-50 mb-1 block">Type</label>
+                                                        <label className="text-xs font-semibold uppercase tracking-wider opacity-50 mb-1 block">{t('calculator.type') || "Type"}</label>
                                                         <div className="relative">
                                                             <select
                                                                 value={crit.type}
@@ -446,7 +447,7 @@ export default function Calculator() {
 
                                                     {/* Weight Slider */}
                                                     <div className="w-full md:w-1/3">
-                                                        <label className="text-xs font-semibold uppercase tracking-wider opacity-50 mb-1 block">Weight</label>
+                                                        <label className="text-xs font-semibold uppercase tracking-wider opacity-50 mb-1 block">{t('calculator.weight') || "Weight"}</label>
                                                         <div className="flex items-center gap-3">
                                                             <input
                                                                 type="range"
@@ -510,7 +511,7 @@ export default function Calculator() {
                                     <thead className={`${darkMode ? 'bg-slate-800' : 'bg-gray-50'}`}>
                                         <tr>
                                             <th className={`p-4 font-semibold border-b border-r sticky left-0 z-10 ${darkMode ? 'border-slate-700 bg-slate-800 text-slate-300' : 'border-gray-200 bg-gray-50 text-gray-600'}`}>
-                                                Alternative
+                                                {t('calculator.alternative') || "Alternative"}
                                             </th>
                                             {criteria.map((crit) => (
                                                 <th key={crit.id} className={`p-4 font-semibold border-b text-center min-w-[140px]

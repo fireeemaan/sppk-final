@@ -11,11 +11,22 @@
     "addAlternative": "Add Alternative",
     "totalWeight": "Total Weight",
     "rankings": "Rankings",
-    "method": "Method"
+    "method": "Method",
+    "name" : "Name",
+    "weight" : "Weight",
+    "type" : "Type",
+    "alternative" : "Alternative"
   },
   "toast": {
     "weightError": "Total weight must be 100. Current total is {{totalWeight}}.",
     "calcSuccess": "Calculation complete!",
     "importSuccess": "Data imported successfully!"
+  },
+  "csv": {
+    "select": "Select a .csv file",
+    "dragDrop": "or drag and drop it here",
+    "upload": "Upload Data",
+    "drop": "Drop file here to upload",
+    "uploading": "Importing..."
   }
 }

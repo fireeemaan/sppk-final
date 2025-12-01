@@ -11,11 +11,22 @@
     "addAlternative": "Tambah Alternatif",
     "totalWeight": "Total Bobot",
     "rankings": "Peringkat",
-    "method": "Metode"
+    "method": "Metode",
+    "name" : "Nama",
+    "weight" : "Bobot",
+    "type" : "Tipe",
+    "alternative" : "Alternatif"
   },
   "toast": {
     "weightError": "Total bobot harus 100. Total saat ini {{totalWeight}}.",
     "calcSuccess": "Perhitungan selesai!",
     "importSuccess": "Data berhasil diimpor!"
+  },
+  "csv": {
+    "select": "Pilih file .csv",
+    "dragDrop": "atau seret file ke sini",
+    "upload": "Unggah Data",
+    "drop": "Letakkan file di sini untuk mengunggah",
+    "uploading": "Mengunggah..."
   }
 }
